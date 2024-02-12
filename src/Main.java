@@ -11,6 +11,7 @@ public class Main {
                 5 - Sistema de porcentagem IPI.
                 6 - Sistema de Calcular fatorial.
                 7 - Sistema de calculos por altura.
+                8 - Sistema de mensalidade faculdade.
                 """);
         Scanner scanner = new Scanner(System.in);
         int opcao = scanner.nextInt();
@@ -76,7 +77,8 @@ public class Main {
                 double resultado = (valorUni1 * quantidadeP1 + valorUni2 * quantidadeP2) * (PorcIPI / 100 + 1);
                 int quantidadeTotal = quantidadeP1 + quantidadeP2;
 
-                System.out.println("A quantidade total dos produtos é: " + quantidadeTotal + ", e o valor total dos produtos é igual a " + resultado);
+                System.out.println("A quantidade total dos produtos é: "
+                        + quantidadeTotal + ", e o valor total dos produtos é igual a " + resultado);
                 break;
 
             case 6:
@@ -90,8 +92,8 @@ public class Main {
                 break;
 
             case 7:
-                int sexo, qtMulheres=0, qtHomens=0;
-                float altura, somaH=0, mediaHomens, maior=0, menor=0;
+                int sexo, qtMulheres = 0, qtHomens = 0;
+                float altura, somaH = 0, mediaHomens, maior = 0, menor = Float.MAX_VALUE;
 
                 for (int i = 0; i < 10; i++) {
                     System.out.print("Escolha o sexo da pessoa (1-Mulher, 2-Homem): ");
@@ -103,22 +105,48 @@ public class Main {
                     } else if (sexo == 2) {
                         qtHomens++;
                         somaH = somaH + altura;
+                        if (altura > maior) {
+                            maior = altura;
+                        }
+                        if (altura < menor) {
+                            menor = altura;
+                        }
                     } else {
                         System.out.println("Opção sexo inválido!");
                     }
-                    if (altura > maior) {
-                        maior = altura;
-                    } else if (altura < menor) {
-                        menor = altura;
-                    }
                 }
-                mediaHomens = somaH / qtHomens;
+                if (qtHomens != 0) {
+                    mediaHomens = somaH / qtHomens;
+                } else {
+                    mediaHomens = 0;
+                }
 
                 System.out.println("A maior altura do grupo é de " + maior + " m, e a menor é de " + menor + " m");
                 System.out.println("A média de altura dos homens é " + mediaHomens + " m");
                 System.out.println("O número de mulheres é " + qtMulheres);
+                break;
+
 
             case 8:
+                System.out.println("Digite quanto você paga de mensalidade:");
+                double mensalidade = scanner.nextDouble();
+                System.out.println("Digite quantos anos você fará de faculdade:");
+                int Qanos = scanner.nextInt();
+                double SomaAnosMensalidade = 0;
+
+                SomaAnosMensalidade += mensalidade * 12;
+
+                for (int i = 2; i <= Qanos; ++i) {
+                    System.out.println("Qual a porcentagem a pagar no ano " + i + "? ");
+                    double porcentagem = scanner.nextDouble() / 100;
+                    double result = mensalidade * (1 + porcentagem) * 12;
+                    SomaAnosMensalidade += result;
+                }
+
+                System.out.println("Sua mensalidade corresponde a: " + mensalidade
+                        + " Você pagará " + (mensalidade * 12) + " em 12 meses.");
+                System.out.println("Em " + Qanos + " anos você pagará " + (float)SomaAnosMensalidade);
+
 
         scanner.close();
     }
