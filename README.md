@@ -11,6 +11,7 @@ Este é um programa Java simples que oferece várias funcionalidades úteis para
 5. **Cálculo de Porcentagem IPI:** Calcula o valor total de produtos com um acréscimo percentual.
 6. **Cálculo de Fatorial:** Calcula o fatorial de um número inserido.
 7. **Cálculo de Estatísticas por Altura:** Calcula estatísticas de altura para um grupo de pessoas.
+8. **Cálculo de mensalidade de faculdade por ano e porcentagem anual**  Calcula a mensalidade pelos anos subsequêntes.
 
 ## Como usar
 
